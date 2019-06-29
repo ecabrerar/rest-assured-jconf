@@ -3,7 +3,10 @@ import static io.restassured.RestAssured.*;
 
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import io.restassured.RestAssured;
 
 
 
@@ -15,14 +18,14 @@ public class JConfDominicanaEndPointTest {
 	    RestAssured.port = 8080;
 	}
 
+	
 	@Test
-	void should_response_status_code_200() {
+	public void should_response_status_code_200() {
 	 	
 			given().
 		    when().
 		        get("jconfdominicana/sessions")
 		        .then()
-		        .assertThat()
 		        .statusCode(200)
 		       ;
 		 
