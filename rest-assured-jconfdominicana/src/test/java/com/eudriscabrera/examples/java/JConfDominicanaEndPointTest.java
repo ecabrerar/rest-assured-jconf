@@ -1,12 +1,10 @@
 package com.eudriscabrera.examples.java;
-
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import io.restassured.RestAssured;
 
 
 public class JConfDominicanaEndPointTest {
@@ -19,12 +17,17 @@ public class JConfDominicanaEndPointTest {
 
 	@Test
 	void should_response_status_code_200() {
-		 given().
+	 	
+			given().
 		    when().
 		        get("jconfdominicana/sessions")
 		        .then()
 		        .assertThat()
-		        .statusCode(200);
+		        .statusCode(200)
+		       ;
+		 
+		 
+		
 		    
 		       
 		
