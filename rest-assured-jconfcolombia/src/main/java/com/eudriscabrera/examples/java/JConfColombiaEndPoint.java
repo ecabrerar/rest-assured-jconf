@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,6 +40,14 @@ public class JConfColombiaEndPoint {
 	public Response desconferencistas() {
 		return Response.ok(new SessionResource().getSessions().stream().map(session -> session.getSpeaker())
 				.collect(Collectors.toList())).build();
+	}
+	
+	@POST
+	@Path("/sessions")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response guardar(Session seccion) {
+		return Response.ok(seccion).build();		
 	}
 
 	@GET
