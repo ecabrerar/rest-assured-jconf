@@ -9,7 +9,7 @@ cd rest-assured-jconf
 
 ## Move to project directory
 
-Example with rest-assured-jconfcolombia directory:
+Example with **rest-assured-jconfcolombia** directory:
 ```bash 
 cd rest-assured-jconfcolombia
 ```
@@ -20,8 +20,9 @@ cd rest-assured-jconfcolombia
 mvn clean  package -DskipTests && java -jar ./target/rest-assured-jconfcolombia-thorntail.jar
 ```
 
-## Example with rest-assured-jconfdominicana directory:
+## Example with **rest-assured-jconfdominicana** directory:
 ```bash 
+cd rest-assured-jconfdominicana
 mvn package -DskipTests && java -jar ./target/rest-assured-jconfdominicana-thorntail.jar
 ```
 
@@ -30,6 +31,7 @@ http://localhost:8080/jconfcolombia/sessions
 
 All the sessions must be shown.
 
+**Notice:** if you are running **rest-assured-jconfcolombia** the url of the endpoint is http://localhost:8080/jconfcolombia/sessions and if you are running **rest-assured-jconfdominicana** the url is http://localhost:8080/jconfdominicana/sessions
 
 Also, you can do the same using curl
 
