@@ -41,3 +41,17 @@ curl http://localhost:8080/jconfcolombia/sessions
 ```
 
 ### Now, open the project using your favorite IDE with maven support and execute the test cases
+
+#### Events
+
+#### JConf Dominicana 2019
+
+[Github](https://github.com/ecabrerar/rest-assured-jconf/tree/master/rest-assured-jconfdominicana) |
+[SlideShare](https://www.slideshare.net/eudris/pruebas-de-integracin-para-servicios-rest-usando-rest-assured)
+
+
+
+#### JConf Colombia 2019
+
+[JConf Colombia 2019](https://github.com/ecabrerar/rest-assured-jconf/tree/master/rest-assured-jconfcolombia) | 
+[SlideShare](https://www.slideshare.net/eudris/pruebas-de-integracin-para-servicios-rest-usando-rest-assured-jconf-colombia-2019)
