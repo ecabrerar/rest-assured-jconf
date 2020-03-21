@@ -1,8 +1,7 @@
 package com.eudriscabrera.examples.java.solution;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
@@ -34,9 +33,13 @@ public class JConfColombiaEndPointSolutionTest {
 
 	@Test
 	public void should_return_status_code_200_and_session_with_id_101() {
-		String contenido = given().pathParam("sessionId", "101").when().get("jconfcolombia/sessions/{sessionId}")
+		String contenido = given().pathParam("sessionId", "101")
+				.when()
+				.get("jconfcolombia/sessions/{sessionId}")
 				.then()				
-				.statusCode(200).extract().asString();
+				.statusCode(200)
+				.extract()
+				.asString();
 
 		Assert.assertTrue(!contenido.isEmpty());
 	}
@@ -47,6 +50,7 @@ public class JConfColombiaEndPointSolutionTest {
 		given().pathParam("sessionId", "101").when().get("jconfcolombia/sessions/{sessionId}").then()
 				.contentType(ContentType.JSON)
 				.body("[0].id", equalTo(101))
+			
 				.body("[0].title", equalTo("Modern Identity Management (en la Era de Serverless y Microservices)"));
 
 	}
@@ -55,14 +59,16 @@ public class JConfColombiaEndPointSolutionTest {
 	public void should_response_status_code_200_and_session_by_time() {
 
 		given()
-		.param("time", "13:00")
+		.param("time", "16:50")
 		.when().get("jconfcolombia/sessions").then().statusCode(200)
 		.and().contentType(ContentType.JSON)
-		.and()
 		.assertThat()
+		.log()
+		.ifValidationFails()
 		.body("size()", equalTo(4));
 
 	}
+	
 	
 	
 	@Test
@@ -85,13 +91,17 @@ public class JConfColombiaEndPointSolutionTest {
 	    request.put("title", "new Session");
 	    request.put("speaker", "summary1");
 	    request.put("time", "13:00");
+	    
+	    Session session = new Session();
 
 		Integer sessionId = given().contentType("application/json")
-			      .body(request)
-			      .when()
+			      .body(session)
+			      .when()			      
 			      .post("jconfcolombia/sessions")
 			      .then()
 			      .assertThat()
+			      .log()
+			      .ifValidationFails()
 			      .statusCode(200)
 			      .extract()
 			      .path("id");

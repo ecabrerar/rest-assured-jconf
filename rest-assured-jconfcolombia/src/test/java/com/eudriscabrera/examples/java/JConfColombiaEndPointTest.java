@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.eudriscabrera.examples.java;
 
 import static org.junit.Assert.assertTrue;
@@ -45,10 +42,12 @@ public class JConfColombiaEndPointTest {
 	public void should_response_status_code_200_with_query_param() {
 
 		given()
-		.param("time", "13:00")
+		.param("time", "10:00")
 		.when()
 		.get("jconfcolombia/sessions")
 		.then()
+		.log()
+		.all()
 		.statusCode(200)
 		.and()
 		.contentType(ContentType.JSON)
@@ -65,13 +64,18 @@ public class JConfColombiaEndPointTest {
 		.then()
 		.statusCode(200)
 		.and()
+		.log()
+		.all()
 		.contentType(ContentType.JSON)
 		.extract()
 		.as(Session[].class);
 	
 		assertTrue(session.length==1);
+		assertTrue(session[0].getId()==101);
 
 	}
+
+
 	
 	@Test
 	public void should_response_status_code_200_with_path_param_2() {
@@ -83,7 +87,7 @@ public class JConfColombiaEndPointTest {
 		.statusCode(200)
 		.and()
 		.contentType(ContentType.JSON)
-		.body("session.id",  equalTo(101))
+		.body("[0].id",  equalTo(101))
 		.body("[0].title",  equalTo("Modern Identity Management (en la Era de Serverless y Microservices)"));
 	
 		

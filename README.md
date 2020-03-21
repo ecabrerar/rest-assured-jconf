@@ -5,7 +5,7 @@
 git clone https://github.com/ecabrerar/rest-assured-jconf.git
 cd rest-assured-jconf
 ```
-
+#### JAVA SE 11 IS REQUIRED
 
 ## Move to project directory
 
